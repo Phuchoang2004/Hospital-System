@@ -1,0 +1,21 @@
+﻿@model WebApp.Models.MedicalRecord
+<div class="container my-4">
+	<div class="card shadow border-0">
+		<div class=" card-header bg-secondary bg-gradient text-light m-lg-0 py-4">
+			<h5 class="pt-2 text-white">Add Medical Record</h5>
+		</div>
+        <div class="card-body my-4">
+            <form asp-action="AddRecord" method="post">
+                <input type="hidden" asp-for="UserID" value="@ViewBag.UserId" />
+                <div class="form-group">
+                    <label asp-for="Detail" class="control-label"></label>
+                    <textarea asp-for="Detail" class="form-control"></textarea>
+                </div>
+                <div class="form-group" style="padding-top:20px">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+	</div>
+
+</div>

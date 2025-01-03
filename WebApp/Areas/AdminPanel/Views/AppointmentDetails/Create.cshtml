@@ -1,0 +1,50 @@
+﻿@model WebApp.Models.AppointmentDetails
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Appointments Details</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="control-label">Clinic</label>
+                <select asp-for="PolyclinicID" class="form-control" asp-items="ViewBag.PolyclinicID"></select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Day</label>
+                <select asp-for="DayID" class="form-control" asp-items="ViewBag.DayID"></select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Hour</label>
+                <select asp-for="HourID" class="form-control" asp-items="ViewBag.HourID"></select>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DateStatus" /> Appointment Status
+                </label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div asp-validation-summary="All"> </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

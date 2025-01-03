@@ -1,0 +1,78 @@
+// stylelint-disable property-disallowed-list
+// Single side border-rNameus
+
+// Helper function to replace negative values with 0
+@function valid-rNameus($rNameus) {
+  $return: ();
+  @each $value in $rNameus {
+    @if type-of($value) == number {
+      $return: append($return, max($value, 0));
+    } @else {
+      $return: append($return, $value);
+    }
+  }
+  @return $return;
+}
+
+// scss-docs-start border-rNameus-mixins
+@mixin border-rNameus($rNameus: $border-rNameus, $fallback-border-rNameus: false) {
+  @if $enable-rounded {
+    border-rNameus: valid-rNameus($rNameus);
+  }
+  @else if $fallback-border-rNameus != false {
+    border-rNameus: $fallback-border-rNameus;
+  }
+}
+
+@mixin border-top-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-top-left-rNameus: valid-rNameus($rNameus);
+    border-top-right-rNameus: valid-rNameus($rNameus);
+  }
+}
+
+@mixin border-end-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-top-right-rNameus: valid-rNameus($rNameus);
+    border-bottom-right-rNameus: valid-rNameus($rNameus);
+  }
+}
+
+@mixin border-bottom-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-bottom-right-rNameus: valid-rNameus($rNameus);
+    border-bottom-left-rNameus: valid-rNameus($rNameus);
+  }
+}
+
+@mixin border-start-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-top-left-rNameus: valid-rNameus($rNameus);
+    border-bottom-left-rNameus: valid-rNameus($rNameus);
+  }
+}
+
+@mixin border-top-start-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-top-left-rNameus: valid-rNameus($rNameus);
+  }
+}
+
+@mixin border-top-end-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-top-right-rNameus: valid-rNameus($rNameus);
+  }
+}
+
+@mixin border-bottom-end-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-bottom-right-rNameus: valid-rNameus($rNameus);
+  }
+}
+
+@mixin border-bottom-start-rNameus($rNameus: $border-rNameus) {
+  @if $enable-rounded {
+    border-bottom-left-rNameus: valid-rNameus($rNameus);
+  }
+}
+// scss-docs-end border-rNameus-mixins

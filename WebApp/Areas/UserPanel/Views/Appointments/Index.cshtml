@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebApp.Models.Date>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>My Previous Appointment</h1>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<p>
+    <a asp-action="Create" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2" style="background-color:#13C5DD">Create New Appointment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Appointment Date
+            </th>
+
+            <th>
+                Day
+            </th>
+
+            <th>
+                Moment
+            </th>
+            <th>
+                Polyclinic
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDetails.DayID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDetails.HourID)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDetails.PolyclinicID)
+                </td>
+            <td>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Cancel appointment</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
